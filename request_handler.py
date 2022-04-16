@@ -1,9 +1,9 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from views import get_all_animals, get_single_animal, create_animal
-from views import get_all_locations, get_single_location
-from views import get_all_employees, get_single_employee
-from views import get_all_customers, get_single_customer
+from views import get_all_animals, get_single_animal, create_animal, delete_animal
+from views import get_all_locations, get_single_location, create_location, delete_location
+from views import get_all_employees, get_single_employee, create_employee, delete_employee
+from views import get_all_customers, get_single_customer, create_customer, delete_customer
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -111,24 +111,79 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Initialize new animal
         new_animal = None
-
+        
+        # Initialize new location
+        new_location = None
+        
+        # Initialize new employee
+        new_employee = None
+        
+        # Initialize new customer
+        new_customer = None
+        
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
         # function next.
         if resource == "animals":
             new_animal = create_animal(post_body)
+            
+        # Add a new location to the list.
+        if resource == "locations":
+            new_location = create_location(post_body)
+            
+        # Add a new employee to the list.
+        if resource == "employees":
+            new_employee = create_employee(post_body)
+            
+        # Add a new customer to the list.
+        if resource == "customers":
+            new_customer = create_customer(post_body)
 
         # Encode the new animal and send in response
         self.wfile.write(f"{new_animal}".encode())
+        
+         # Encode the new location and send in response
+        self.wfile.write(f"{new_location}".encode())
+        
+         # Encode the new employee and send in response
+        self.wfile.write(f"{new_employee}".encode())
+        
+        # Encode the new customer and send in response
+        self.wfile.write(f"{new_customer}".encode())
 
+    def do_DELETE(self):
+        """Handles DELETE requests to the server"""
+    # Set a 204 response code
+        self._set_headers(204)
+
+    # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+    # Delete a single animal from the list
+        if resource == "animals":
+            delete_animal(id)
+
+    # Delete a single location from the list
+        if resource == "locations":
+            delete_location(id)
+
+    # Delete a single employee from the list
+        if resource == "employees":
+            delete_employee(id)
+
+    # Delete a single customer from the list
+        if resource == "customers":
+            delete_customer(id) 
+
+    # Encode the new animal and send in response
+        self.wfile.write("".encode())
     # Here's a method on the class that overrides the parent's method.
     # It handles any PUT request.
 
     def do_PUT(self):
         """Handles PUT requests to the server
         """
-        self.do_POST()
-
+        self.do_POST() 
 
 # This function is not inside the class. It is the starting
 # point of this application.
