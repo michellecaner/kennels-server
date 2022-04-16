@@ -49,7 +49,7 @@ def delete_location(id):
 
     if location_index >= 0:
         LOCATIONS.pop(location_index)
- 
+
 def update_location(id, new_location):
     """This function deletes AND replaces location with updated info"""
     for index, location in enumerate(LOCATIONS):
