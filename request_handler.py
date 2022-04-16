@@ -86,7 +86,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             else:
                 response = f"{get_all_employees()}"
                 
-        if resource == "customer":
+        if resource == "customers":
             if id is not None:
                 response = f"{get_single_customer(id)}"
             else:
