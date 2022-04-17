@@ -3,25 +3,29 @@ CUSTOMERS = [
         "id": 1,
         "first name": "Mame",
         "last name": "Burnside",
-        "email": "mburnside@gmail.com"
+        "email": "mburnside@gmail.com",
+        "new customer": True
     },
     {
         "id": 2,
         "first name": "Patrick",
         "last name": "Dennis",
-        "email": "pdennis@gmail.com"
+        "email": "pdennis@gmail.com",
+        "new customer": True
     },
     {
         "id": 3,
         "first name": "Agnes",
         "last name": "Gooch",
-        "email": "agooch@gmail.com"
+        "email": "agooch@gmail.com",
+        "new customer": True
     },
     {
         "id": 4,
         "first name": "Vera",
         "last name": "Charles",
-        "email": "vcharles@gmail.com"
+        "email": "vcharles@gmail.com",
+        "new customer": True
     }
 ]
 
@@ -61,3 +65,10 @@ def delete_customer(id):
 
     if customer_index >= 0:
         CUSTOMERS.pop(customer_index)
+
+def update_customer(id, new_customer):
+    """This function deletes AND replaces customer with updated info"""
+    for index, customer in enumerate(CUSTOMERS):
+        if customer["id"] == id:
+            CUSTOMERS[index] = new_customer
+            break
