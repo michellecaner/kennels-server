@@ -3,19 +3,19 @@ EMPLOYEES = [
       "id": 1,
       "name": "Justin Case",
       "role": "staff",
-      "locationId": 2
+      "location_id": 2
     },
     {
       "id": 2,
       "name": "Irma Gawd",
       "role": "staff",
-      "locationId": 1
+      "location_id": 1
     },
     {
       "id": 3,
       "name": "Paige Turner",
       "role": "staff",
-      "locationId": 1
+      "location_id": 1
     }
 ]
 
