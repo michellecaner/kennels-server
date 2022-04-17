@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from views import get_all_animals, get_single_animal, create_animal, delete_animal, update_animal
 from views import get_all_locations, get_single_location, create_location, delete_location, update_location
 from views import get_all_employees, get_single_employee, create_employee, delete_employee, update_employee
-from views import get_all_customers, get_single_customer, create_customer, delete_customer
+from views import get_all_customers, get_single_customer, create_customer, delete_customer, update_customer
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -74,19 +74,19 @@ class HandleRequests(BaseHTTPRequestHandler):
                 response = f"{get_single_animal(id)}"
             else:
                 response = f"{get_all_animals()}"
-                 
+
         if resource == "locations":
             if id is not None:
                 response = f"{get_single_location(id)}"
             else:
                 response = f"{get_all_locations()}"
-                
+
         if resource == "employees":
             if id is not None:
                 response = f"{get_single_employee(id)}"
             else:
                 response = f"{get_all_employees()}"
-                
+
         if resource == "customers":
             if id is not None:
                 response = f"{get_single_customer(id)}"
@@ -111,34 +111,34 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Initialize new animal
         new_animal = None
-        
+
         # Add a new animal to the list.
         if resource == "animals":
             new_animal = create_animal(post_body)
             # Encode the new animal and send in response
             self.wfile.write(f"{new_animal}".encode())
-        
+
         # Initialize new location
         new_location = None
-        
+
         # Add a new location to the list.
         if resource == "locations":
             new_location = create_location(post_body)
             # Encode the new location and send in response
             self.wfile.write(f"{new_location}".encode())
-        
+
         # Initialize new employee
         new_employee = None
-        
+
         # Add a new employee to the list.
         if resource == "employees":
             new_employee = create_employee(post_body)
              # Encode the new employee and send in response
             self.wfile.write(f"{new_employee}".encode())
-        
+
         # Initialize new customer
         new_customer = None
-           
+
         # Add a new customer to the list.
         if resource == "customers":
             new_customer = create_customer(post_body)
@@ -167,7 +167,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     # Delete a single customer from the list
         if resource == "customers":
-            delete_customer(id) 
+            delete_customer(id)
 
     # Encode the new animal and send in response
         self.wfile.write("".encode())
@@ -188,16 +188,20 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         if resource == "animals":
             update_animal(id, post_body)
-            
+
         # Delete a single location from the list
         if resource == "locations":
             update_location(id, post_body)
-            
+
         # Delete a single employee from the list
         if resource == "employees":
-            update_employee(id, post_body)    
+            update_employee(id, post_body)
 
-        # Encode the new animal/location/employee and send in response
+        # Delete a single customer from the list
+        if resource == "customers":
+            update_customer(id, post_body)
+
+        # Encode the new animal/location/employee/customer and send in response
         self.wfile.write("".encode())
 
 # This function is not inside the class. It is the starting
