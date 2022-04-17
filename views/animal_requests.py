@@ -3,7 +3,7 @@ ANIMALS = [
         "id": 1,
         "name": "Snickers",
         "species": "Dog",
-        "customerId": 4,
+        "customer_id": 4,
         "location": 1,
         "status": "Admitted"
     },
@@ -11,7 +11,7 @@ ANIMALS = [
         "id": 2,
         "name": "Brixton",
         "species": "Dog",
-        "customerId": 1,
+        "customer_id": 1,
         "location": 1,
         "status": "Admitted"
     },
@@ -19,7 +19,7 @@ ANIMALS = [
         "id": 3,
         "name": "Blue",
         "species": "Cat",
-        "customerId": 3,
+        "customer_id": 3,
         "location": 1,
         "status": "Admitted"
     },
@@ -27,7 +27,7 @@ ANIMALS = [
         "id": 4,
         "name": "Micky",
         "species": "Mouse",
-        "customerId": 4,
+        "custome_id": 4,
         "location": 1,
         "status": "Admitted"
     },
@@ -35,7 +35,7 @@ ANIMALS = [
         "id": 5,
         "name": "Scooby",
         "species": "Dog",
-        "customerId": 4,
+        "customer_id": 4,
         "location": 1,
         "status": "Admitted"
     },
@@ -43,7 +43,7 @@ ANIMALS = [
         "id": 6,
         "name": "Jack",
         "species": "Rabbit",
-        "customerId": 3,"location": 1,
+        "customer_id": 3,"location": 1,
         "status": "Admitted"
     }
 ]

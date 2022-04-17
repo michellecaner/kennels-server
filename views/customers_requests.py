@@ -1,31 +1,31 @@
 CUSTOMERS = [
      {
         "id": 1,
-        "first name": "Mame",
-        "last name": "Burnside",
+        "first_name": "Mame",
+        "last_name": "Burnside",
         "email": "mburnside@gmail.com",
-        "new customer": True
+        "new_customer": True
     },
     {
         "id": 2,
-        "first name": "Patrick",
-        "last name": "Dennis",
+        "first_name": "Patrick",
+        "last_name": "Dennis",
         "email": "pdennis@gmail.com",
-        "new customer": True
+        "new_customer": True
     },
     {
         "id": 3,
-        "first name": "Agnes",
-        "last name": "Gooch",
+        "firs_name": "Agnes",
+        "last_name": "Gooch",
         "email": "agooch@gmail.com",
-        "new customer": True
+        "ne_customer": True
     },
     {
         "id": 4,
-        "first name": "Vera",
-        "last name": "Charles",
+        "first_name": "Vera",
+        "last_name": "Charles",
         "email": "vcharles@gmail.com",
-        "new customer": True
+        "new_customer": True
     }
 ]
 
