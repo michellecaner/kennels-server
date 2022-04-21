@@ -27,7 +27,7 @@ ANIMALS = [
         "id": 4,
         "name": "Micky",
         "species": "Mouse",
-        "custome_id": 4,
+        "customer_id": 4,
         "location": 1,
         "status": "Admitted"
     },
