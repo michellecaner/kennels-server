@@ -33,7 +33,7 @@ def get_all_locations():
         FROM location a
         """)
 
-        # Initialize an empty list to hold all animal representations
+        # Initialize an empty list to hold all location representations
         locations = []
 
         # Convert rows of data into a Python list
@@ -42,10 +42,10 @@ def get_all_locations():
         # Iterate list of data returned from database
         for row in dataset:
 
-            # Create an animal instance from the current row.
+            # Create an location instance from the current row.
             # Note that the database fields are specified in
             # exact order of the parameters defined in the
-            # Animal class above.
+            # Location class above.
             location = Location(row['id'], row['name'], row['address'])
 
             locations.append(location.__dict__)
@@ -73,7 +73,7 @@ def get_single_location(id):
         # Load the single result into memory
         data = db_cursor.fetchone()
 
-        # Create an animal instance from the current row
+        # Create an location instance from the current row
         location = Location(data['id'], data['name'], data['address'])
 
         return json.dumps(location.__dict__)

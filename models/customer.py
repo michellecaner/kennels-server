@@ -1,11 +1,11 @@
 class Customer():
     """Creates a new object in the Customer class"""
-    def __init__(self, id, first_name, last_name, email, new_customer):
+    def __init__(self, id, name, address, email, password):
         self.id = id
-        self.first_name = first_name
-        self.last_name = last_name
+        self.name = name
+        self.address = address
         self.email = email
-        self.new_customer = new_customer
+        self.password = password
 
-new_client = Customer(5, "Sally", "Kato", "skato@gmail.com", True)
+new_client = Customer(5, "Sally Kato", "42 Taco Way", "skato@gmail.com", "secret123")
     
