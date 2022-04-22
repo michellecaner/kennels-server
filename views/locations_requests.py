@@ -1,31 +1,82 @@
+import sqlite3
+import json
+from models import Location
+
 LOCATIONS = [
     {
       "id": 1,
       "name": "Nashville North",
       "address": "500 Puppy Way",
-      "status": "Open for Business"
     },
     {
       "id": 2,
       "name": "Nashville South",
       "address": "209 Emory Drive",
-      "status": "Open for Business"
     }
   ]
 
 def get_all_locations():
-    """This function returns all locations"""
-    return LOCATIONS
+    """This function queries the database for all locations, converts each row into an Location instance, converts the list to JSON, and respond to the client request"""
+    # Open a connection to the database
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+
+        # Just use these. It's a Black Box.
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        # Write the SQL query to get the information you want
+        db_cursor.execute("""
+        SELECT
+            a.id,
+            a.name,
+            a.address
+        FROM location a
+        """)
+
+        # Initialize an empty list to hold all animal representations
+        locations = []
+
+        # Convert rows of data into a Python list
+        dataset = db_cursor.fetchall()
+
+        # Iterate list of data returned from database
+        for row in dataset:
+
+            # Create an animal instance from the current row.
+            # Note that the database fields are specified in
+            # exact order of the parameters defined in the
+            # Animal class above.
+            location = Location(row['id'], row['name'], row['address'])
+
+            locations.append(location.__dict__)
+
+    # Use `json` package to properly serialize list as JSON
+    return json.dumps(locations)
 
 def get_single_location(id):
-    """This function returns a single location"""
-    requested_location = None
+    """This function gets a single location"""
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
 
-    for location in LOCATIONS:
-        if location["id"] == id:
-            requested_location = location
+        # Use a ? parameter to inject a variable's value
+        # into the SQL statement.
+        db_cursor.execute("""
+        SELECT
+            a.id,
+            a.name,
+            a.address
+        FROM location a
+        WHERE a.id = ?
+        """, ( id, ))
 
-    return requested_location
+        # Load the single result into memory
+        data = db_cursor.fetchone()
+
+        # Create an animal instance from the current row
+        location = Location(data['id'], data['name'], data['address'])
+
+        return json.dumps(location.__dict__)
 
 def create_location(location):
     """This function adds the new location dictionary to the location list"""
