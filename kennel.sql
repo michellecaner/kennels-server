@@ -79,10 +79,10 @@ SELECT
     a.status,
     a.location_id,
     a.customer_id,
-		l.name location_name,
+	l.name location_name,
     l.address location_address,
-		c.name customer_name,
-		c.address customer_address
+	c.name customer_name,
+	c.address customer_address
 FROM Animal a
 JOIN Location l
     ON l.id = a.location_id
