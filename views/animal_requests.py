@@ -1,8 +1,6 @@
 import sqlite3
 import json
-from models import Animal
-from models import Location
-from models import Customer
+from models import (Animal, Location, Customer)
 
 ANIMALS = [
     {
